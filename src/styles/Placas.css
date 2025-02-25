@@ -44,34 +44,27 @@ a{
     padding: 15px;
 
   }
+
+ 
+.table tbody tr:nth-child(odd) {
+  background-color: #d4d4d4;
+}
+
+
   
-  /* En pantallas grandes, mostramos la tabla */
-  @media screen and (min-width: 760px) {
-    .table-wrapper {
-      display: block;
-    }
-  
-    .table {
-      display: table;
-      width: 100%;
-      margin-top: 20px;
-    }
-  
-    .table th,
-    .table td {
-      padding: 10px;
-      text-align: center;
-      border: 1px solid #ddd;
-    }
-  
-    .table th {
-      background-color: #f8f9fa;
-      font-weight: bold;
-    }
-  }
-  
-  /* En pantallas pequeñas, usamos cards */
+  /* Cards para pantallas pequeñas*/
   @media screen and (max-width: 759px) {
+    .consulta__formulario{
+      margin-top: 2rem;
+    }
+    .form--table{
+      display: none
+    }
+
+    .form-group{
+      display:none
+    }
+
     .table-wrapper {
       display: block;
     }
@@ -95,8 +88,8 @@ a{
   
     .card-header {
       font-weight: bold;
-      background-color: #212529;
-      color: rgb(0, 0, 0);
+      background-color: #616161;
+      color:rgb(255, 255, 255);
       padding: 10px;
       border-radius: 8px 8px 0 0;
     }
@@ -107,8 +100,8 @@ a{
   
     .card-footer {
       padding: 10px;
-      background-color: #212529;
-      color: rgb(0, 0, 0);
+      background-color: #686868;
+      color: rgb(240, 240, 240);
       border-radius: 0 0 8px 8px;
       text-align: center;
     }
@@ -118,6 +111,219 @@ a{
       justify-content: space-between;
       margin-bottom: 10px;
     }
+
+
+    .tdtable{
+      width: 100%
+    }
+
+    .tdspan{
+      margin-left: 10rem;
+    }
+
+    .tdspann{
+      margin-left: 9rem;
+    }
+
   }
   
-  
+    @media(min-width: 768px){
+      .card{
+        display:none
+      }
+
+      .form-group-cards{
+        display: none;
+      }
+
+      .form-group-cards{
+        display: none;
+      }
+
+      .table{
+        border-radius: 0rem;
+        border: none;
+        display: table;
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      .table-header{
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    
+      .table th,
+      .table td {
+        padding: 5px;
+        max-width: 13rem;
+        text-align: right;
+        
+      }
+    
+      .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+
+      .tdtable{
+        width: 100%
+      }
+
+      .tdspan{
+        margin-left: 40rem;
+      }
+
+      .tdspann{
+        margin-left: 39rem;
+      }
+    }
+
+    @media screen and (min-width: 820px){
+     
+      .card{
+        display:none
+      }
+
+      .form-group-cards{
+        display: none;
+      }
+
+      .table {
+        display: table;
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 0rem;
+        border: none;
+        display: table;
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      .tdtable{
+        
+      }
+
+      .table-header{
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    
+      .table th,
+      .table td {
+        
+        max-width: 1rem;
+        text-align: center;
+        
+      }
+    
+      .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+
+      .tdtable{
+        width: 100%
+      }
+
+      .tdspan{
+        margin-left: 45rem;
+      }
+
+      .tdspann{
+        margin-left: 44rem;
+      }
+
+    }
+
+
+    @media(min-width: 1020px){
+      .tdtable{
+        width: 100%
+      }
+
+      .tdspan{
+        margin-left: 65rem;
+      }
+
+      .tdspann{
+        margin-left: 64rem;
+      }
+    }
+
+
+    @media screen and (min-width: 1200px){
+      .table{
+        border-radius: 0rem;
+        border: none;
+        display: table;
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      .card{
+        display:none
+      }
+
+      .form-group-cards{
+        display: none;
+      }
+
+      
+
+      .table-header{
+        font-size: 2rem;
+        text-align: center;
+      }
+    
+      .table th,
+      .table td {
+        margin: 0;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    
+      .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+
+      .tdtable{
+        width: 100%
+      }
+
+      .tdspan{
+        margin-left: 98rem;
+      }
+    }
+
+    @media(min-width: 1400px){
+      .tdtable{
+        width: 100%
+      }
+
+      .tdspan{
+        margin-left: 105rem;
+      }
+
+      .tdspann{
+        margin-left: 104rem;
+      }
+    }
+
+    @media(min-width: 1600px){
+      .tdtable{
+        width: 100%
+      }
+
+      .tdspan{
+        margin-left: 153rem;
+      }
+
+      .tdspann{
+        margin-left: 152rem;
+      }
+    }
