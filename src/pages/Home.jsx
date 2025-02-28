@@ -32,8 +32,6 @@ function Home() {
     }, [isModalOpen]);
 
 
-    
-
     return(
 
         <div className= "body">
@@ -68,7 +66,10 @@ function Home() {
 
 
             <div className='hero'>
-                <p id="hero-parrafo">Si necesitas soporte, puedes comunicarte al siguiente correo electrónico: multas@monterrey.gob.mx</p>
+                <div className="hero-parrafo">
+                    <p>Si necesitas soporte, puedes comunicarte al siguiente correo electrónico: multas@monterrey.gob.mx</p>
+                </div>
+                
                 <div className="hero__image">
                     <img id="botones" src= {botones_logo} alt="botones" />
                 </div>
@@ -90,8 +91,9 @@ function Home() {
 
                     <div className='consulta__footer'>
                         <p>PARA REALIZAR SU PAGO ACUDA A SU DELEGACION MAS CERCANA</p>
-                        <p>Para dudas...</p>
-                        <p>Para actualiza la pagina</p>
+                        <p>Para dudas sobre su adeudo llámenos al ...</p>
+                        
+                        <Link id="aviso__footer">Aviso de privacidad</Link>
                     </div>
                 </div>
 

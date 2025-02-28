@@ -1,0 +1,62 @@
+/* Fondo del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.timer{
+    display: grid;
+    
+}
+
+/* Contenedor del modal */
+.modal-container {
+    background-color: rgb(218, 218, 218); 
+    padding: 1rem; 
+    border-radius: 1rem; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 20rem;
+}
+
+/* Spinner de carga */
+.spinner {
+    width: 10rem; 
+    height: 10rem; 
+    align-items: center;
+    border-width: 8px; 
+    border-style:solid;
+    margin-left: 2rem;
+    border-color: #3b82f6 transparent #3b82f6 #3b82f6; 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem; 
+}
+
+/* Animación del spinner */
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Texto de carga */
+.loading-text {
+    text-align: center;
+    color: #08023b;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    
+}

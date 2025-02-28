@@ -5,7 +5,7 @@
     --gris_suave: #e4e4e4;
     --gris_medio: #747474;
     --morado:#861cff;
-    --verde: #0e680e;
+    --verde: #1fff1f;
     --fuente-principal: 'Outfit', sans-serif;
 }
 html {
@@ -71,7 +71,7 @@ a{
     background-color: var(--negro);
     display: flex;
     justify-content: space-around;
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 2rem;
 }
 
@@ -91,22 +91,19 @@ a{
 }
 
 
-#hero-parrafo{
+.hero-parrafo{
     background-color: #ebde6b;
-    font-size: 1.5rem;
+    font-size:1.5rem;
     text-align: center;
-    margin: 0;
+    margin-top:4.2rem;
+    padding-top: .1rem;
+    padding-bottom: .1rem;
 }
 
-/* .hero__image{
-    background-image: url('/multas-app/public/botones-links-pago.jpg');
-    background-size: cover;
-    background-position: center;
-} */
+
 
 #botones{
     position: absolute;
-    
 }
 
 .botones-parrafo{
@@ -123,7 +120,7 @@ a{
 }
 
 .main{
-    margin-top: 5rem;
+    margin-top: 2rem;
     background-color: var(--gris_suave);
     padding: 2rem;
 }
@@ -294,7 +291,7 @@ a{
 
 @media(min-width: 1024px){
 
-    body{
+    .body{
         margin: 0;
         padding: 0;
     }
@@ -302,37 +299,59 @@ a{
     .header{
         grid-template-rows: none;
         display: grid;
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: 1fr 8fr;
+        height: 2.5rem;
     }
+    .header__logo{
+   
+        margin-left: -1rem;
+        background-color: #202533;
+        background-image: url(../../public/logo-mty-remo.png);
+        margin-top: -1rem;
+        background-size: 8rem;
+        padding-bottom: -5rem;
+        background-repeat: no-repeat;
+        background-position: center;
     
+}
     .header__nav{
         display: grid;
         grid-template-rows: repeat(2, 1fr);
+    }
+
+    #Link{
+        font-size: 1.5rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
     
     .header__nav--up{
         background-color: var(--negro);
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-end;
+        margin-top: -1rem;
         padding-left: 40rem;
+        padding-top: 1.5rem;
+        padding-bottom: 0;
     }
     
     .header__nav--down{
         background-color: var(--negro);
         display: flex;
         justify-content:flex-end;
-        padding: 0rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         left: 15rem;
     }
 
-    #hero-parrafo{
+    .hero-parrafo{
         background-color: #ebde6b;
-        font-size: 2rem;
+        font-size:1.5rem;
         text-align: center;
-        padding-top: 1rem;
-        height: 5rem;
+        margin-top:5.5rem;
+        padding-top: .1rem;
+        padding-bottom: .1rem;
     }
-
 
     #botones{
         width: 100%
@@ -347,19 +366,51 @@ a{
         display: flex;
         align-items: flex-end;
         text-align: center;
-        top: 20rem;
-        left: 15rem;
+        top: 5rem;
+        left: 30rem;
         opacity: 80%;
         width: 80rem;
     
     }
 
-    .main{
-        margin-top: 30rem;
-        background-color: var(--gris_suave);
-        padding: 5rem
+    .hero__image{
+        height: 4rem;
+        margin-top: -1rem;
     }
     
+    .hero__image img{
+        height: 30rem;
+        scale: 5rem;
+    }
+
+    .main{
+        margin-top: 5rem;
+        background-color: var(--gris_suave);
+        padding: 5rem;
+        border-radius: 3rem;
+    }
+
+    .consulta__titulo h2{
+        font-size: 2.2rem;
+    }
+    
+    .consulta__footer p:first-child{
+        font-size: 1.5rem;
+        color: rgb(29, 29, 53);
+        font-weight: bold;
+    }
+
+    .consulta__footer p{
+        font-size: 1.5rem;
+        color: var(--gris_medio)
+    }
+
+    #aviso__footer{
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
 
     .form--placa{
         display: flex;
@@ -385,7 +436,6 @@ a{
         color: var(--blanco);
     }
     
-   
     
     
     .consulta__footer{
@@ -516,6 +566,17 @@ a{
         margin-right: 3rem;
     }
 
+    
+    .header__logo{
+        margin-left: -1rem;
+        background-color: #202533;
+        background-image: url(../../public/logo-mty-remo.png);
+        background-size: 9rem;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+
 
     #botones{
         width: 200rem; /* Establece un tamaño fijo */
@@ -551,5 +612,9 @@ a{
         justify-content:flex-end;
         padding: 0rem;
         left: 15rem;
+    }
+
+    .main{
+        margin-top: 25rem;
     }
 }

@@ -50,7 +50,9 @@ a{
   background-color: #d4d4d4;
 }
 
-
+.consulta{
+  border-radius: 3rem;
+}
   
   /* Cards para pantallas pequeñas*/
   @media screen and (max-width: 759px) {
@@ -240,6 +242,71 @@ a{
 
 
     @media(min-width: 1020px){
+      
+    .form--placa {
+        display: flex;
+        align-items: center; /* Alinea verticalmente los elementos */
+        padding-bottom: 1rem;
+    }
+    
+    #input {
+        margin-bottom: 2rem;
+        height: 4rem;
+        width: 30rem;
+        margin-left: 2rem;
+        text-transform: uppercase;
+        font-size: 15px;
+        border: 2px solid gray;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3 ease;
+    }
+
+    .error{
+      border-color: red;
+    }
+
+    #input::placeholder{
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    #input:focus{
+      border-color: #0d9223
+    }
+
+    #button::hover{
+      cursor: pointer;
+    }
+    
+    #button {
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: rgb(20, 20, 56);
+        color: white;
+        border: none;
+        cursor: pointer;
+        height: 4rem; /* Para que tenga la misma altura que el input */
+        width: 10rem;
+        margin-left: 2rem;
+    }
+
+    .table{
+      border-radius: 0rem;
+      border: none;
+      display: table;
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    td, th{
+      border: none;
+      padding: 0;
+    }
+
       .tdtable{
         width: 100%
       }
@@ -249,8 +316,21 @@ a{
       }
 
       .tdspann{
-        margin-left: 64rem;
+        margin-left: 63rem;
       }
+
+      .table-header{
+        font-size: 1.5rem;
+      }
+
+      td{
+        font-size: 1.3rem;
+      }
+
+      .tdtable{
+        font-size: 1.5rem;
+      }
+
     }
 
 
@@ -296,7 +376,11 @@ a{
       }
 
       .tdspan{
-        margin-left: 98rem;
+        margin-left: 99rem;
+      }
+
+      .tdspann{
+        margin-left: 98.5rem;
       }
     }
 
@@ -312,6 +396,10 @@ a{
       .tdspann{
         margin-left: 104rem;
       }
+
+      .tdtable{
+        font-size: 2rem;
+      }
     }
 
     @media(min-width: 1600px){
@@ -320,10 +408,10 @@ a{
       }
 
       .tdspan{
-        margin-left: 153rem;
+        margin-left: 146rem;
       }
 
       .tdspann{
-        margin-left: 152rem;
+        margin-left: 145rem;
       }
     }

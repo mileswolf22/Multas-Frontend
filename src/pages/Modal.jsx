@@ -1,6 +1,8 @@
 
 import '../styles/Modal.css'
 
+
+
 // eslint-disable-next-line react/prop-types
 function Modal({ isOpen, onClose }) {
     if (!isOpen) return null; // No renderiza el modal si no está abierto
@@ -18,7 +20,7 @@ function Modal({ isOpen, onClose }) {
                 left: "0", 
                 width: "100vw", 
                 height: "100vh", 
-                backgroundColor: "rgba(0,0,0,0.5)", 
+                backgroundColor: "rgba(0, 0, 0, 0.5)", 
                 display: "flex", 
                 justifyContent: "center", 
                 alignItems: "center",
@@ -78,5 +80,7 @@ function Modal({ isOpen, onClose }) {
         </div>
     );
 }
+
+
 
 export default Modal;

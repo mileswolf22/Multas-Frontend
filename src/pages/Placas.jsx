@@ -1,33 +1,54 @@
 import '../styles/Placas.css'
 import { useState } from "react";
 import axios from "axios";
+import LoadingModal from '../pages/ModalLoad'
 import DOMPurify from "dompurify";
 import { format } from 'date-fns';
+import { AnimatePresence } from 'framer-motion';
 
 function Placas() {
   const [inputValue, setInputValue] = useState("");
   const [infracciones, setInfracciones] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const handleInputChange = (e) => {
     const sanitizedValue = DOMPurify.sanitize(e.target.value);
     setInputValue(sanitizedValue);
+    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setVisible(true);
+    
 
     const safeData = DOMPurify.sanitize(inputValue);
+    const input = document.getElementById("input");
     try {
-      console.log("Realizando consulta...");
-      const response = await axios.get(`http://localhost:5000/api/infracciones/?placa=${safeData}`);
-
-      console.log(JSON.stringify(response.data, null, 2));
-
-      setInfracciones(response.data); 
+      if(input.value.trim() === ""){
+        input.classList.add("error")
+        // alert("⚠️ Favor de ingresar datos validos: La placa debe contener un valor de 7 digitos ⚠️")
+        setLoading(false);
+        setVisible(false);
+      }else{
+        console.log("Realizando consulta...");
+        const response = await axios.get(`http://192.168.37.110:5000/api/infracciones/?placa=${safeData}`);
+        
+        console.log(JSON.stringify(response.data, null, 2));
+  
+        setInfracciones(response.data); 
+        
+      }
     } catch (error) {
       console.error("Error en la consulta:", error);
     }
-  };
+    };
+
+  const clearTable = () => {
+    setInfracciones([])
+  }
 
   function procesarAdeudos(infraccion) {
     let ViewBag = {};
@@ -61,6 +82,21 @@ function Placas() {
       total = 0;
     } else {
       pagado = false;
+
+      if(importe === null){
+        importe = 0
+      }else if(importe === ""){
+        importe = 0;
+      }else{
+        if(descuento === null){
+          descuento = 0;
+        }else if(descuento === ""){
+          descuento = 0;
+        }else{
+          //Aqui deberia hacer el calculo del descuento
+          descuento = "";
+        }
+      }
     }
 
     return { ViewBag, bloqueado, ESTATUS, total, pagado, importe, descuento };
@@ -81,11 +117,18 @@ function Placas() {
 
   return (
     <div className="consulta__formulario">
+
+      
+
+      <AnimatePresence>
+        {loading && <LoadingModal onClose={() => setLoading(false)} />}
+      </AnimatePresence>
       <form className="form" onSubmit={handleSubmit}>
+        
         <div className="form--placa">
           <p>Placa: </p>
-          <input id="input" type="text" value={inputValue} onChange={handleInputChange} />
-          <button id="button" type="submit">Buscar</button>
+          <input required id="input" type="text" value={inputValue} onChange={handleInputChange} placeholder='Ingrese su placa'/>
+          <button id="button" type="submit" onClick={clearTable}>Buscar</button>
         </div>
 
         <div className="form--table">
@@ -126,7 +169,10 @@ function Placas() {
           </table>
         </div>
 
+        
+        {visible &&(
         <div className="form-group">
+          
           <table className="table-result">
             <tbody>
               <tr>
@@ -141,6 +187,7 @@ function Placas() {
             </tbody>
           </table>
         </div>
+        )}
 
         {/* Cards */}
         <div className="card-wrapper">
@@ -198,6 +245,7 @@ function Placas() {
         </div>
 
         {/* Totales */}
+        {visible &&(
         <div className="form-group-cards">
           <table className="table-result">
             <tbody>
@@ -213,9 +261,9 @@ function Placas() {
             </tbody>
           </table>
         </div>
-
-
+        )}
       </form>
+      
     </div>
 
     
