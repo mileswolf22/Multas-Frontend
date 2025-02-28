@@ -167,6 +167,40 @@
     }
 }
 
+@media(min-width: 820px){
+    .modal-header {
+        background-color: #1d1d1d;
+        left: 20rem;
+        border-top-left-radius: 3rem;
+        border-top-right-radius: 3rem;
+        border-bottom: 2px solid #858585;
+        margin-bottom: 5rem;
+        width: 70rem;
+        margin-top: -6rem;
+    }
+
+    .modal-body {
+        color:#1d1d1d;
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-align: justify;
+        padding: 5rem;
+        width: 70rem;
+        margin-top:-8rem;
+        height: 34rem;
+        margin-left: -1rem;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1rem;
+        margin-left: 15rem;
+        margin-right: 15rem;
+        margin-top: -8rem;
+    }
+}
+
 @media(min-width: 1024px){
     .modal-dialog{
         background-color: var(--blanco);

@@ -23,6 +23,7 @@ function Placas() {
     setLoading(true);
     setVisible(true);
     
+    
 
     const safeData = DOMPurify.sanitize(inputValue);
     const input = document.getElementById("input");
@@ -34,14 +35,13 @@ function Placas() {
         setVisible(false);
       }else{
         console.log("Realizando consulta...");
-        const response = await axios.get(`http://192.168.37.110:5000/api/infracciones/?placa=${safeData}`);
-        
+        const response = await axios.get(`http://192.168.100.92:5000/api/infracciones/?placa=${safeData}`);
         console.log(JSON.stringify(response.data, null, 2));
-  
         setInfracciones(response.data); 
-        
       }
     } catch (error) {
+      setLoading(false);
+      alert("No se encontro informacion")
       console.error("Error en la consulta:", error);
     }
     };
@@ -123,56 +123,56 @@ function Placas() {
       <AnimatePresence>
         {loading && <LoadingModal onClose={() => setLoading(false)} />}
       </AnimatePresence>
+      
       <form className="form" onSubmit={handleSubmit}>
-        
-        <div className="form--placa">
-          <p>Placa: </p>
-          <input required id="input" type="text" value={inputValue} onChange={handleInputChange} placeholder='Ingrese su placa'/>
-          <button id="button" type="submit" onClick={clearTable}>Buscar</button>
-        </div>
-
-        <div className="form--table">
-          <table className="table" border={1}>
-            <thead>
-              <tr>
-                <th scope="col" className="table-header">Boleta</th>
-                <th scope="col" className="table-header">Placa</th>
-                <th scope="col" className="table-header">Fecha Infracción</th>
-                <th scope="col" className="table-header">Infracción</th>
-                <th scope="col" className="table-header">Descripción</th>
-                <th scope="col" className="table-header">Descuento</th>
-                <th scope="col" className="table-header">Monto</th>
-              </tr>
-            </thead>
-            <tbody>
-              {infracciones.length > 0 ? (
-                infracciones.map((infraccion, index) => {
-                  const { importe, descuento } = procesarAdeudos(infraccion);
-                  return (
-                    <tr key={index}>
-                      <td>{infraccion[0]}</td>
-                      <td>{infraccion[1]}</td>
-                      <td>{format(new Date(infraccion[2]), 'dd MMMM yyyy HH:mm:ss')}</td>
-                      <td>{infraccion[3]}</td>
-                      <td>{infraccion[4]}</td>
-                      <td>${descuento.toFixed(2)}</td>
-                      <td>${importe.toFixed(2)}</td>
-                    </tr>
-                  );
-                })
-              ) : (
+      
+          <div className="form--placa">
+            <p>Placa: </p>
+            <input required id="input" type="text" value={inputValue} onChange={handleInputChange} placeholder='Ingrese su placa'/>
+            <button id="button" type="submit" onClick={clearTable}>Buscar</button>
+          </div>
+          {visible &&(
+          <div className="form--table">
+            <table className="table" border={1}>
+              <thead>
                 <tr>
-                  <td colSpan="7" style={{ textAlign: "center" }}>No hay multas registradas.</td>
+                  <th scope="col" className="table-header">Boleta</th>
+                  <th scope="col" className="table-header">Placa</th>
+                  <th scope="col" className="table-header">Fecha Infracción</th>
+                  <th scope="col" className="table-header">Infracción</th>
+                  <th scope="col" className="table-header">Descripción</th>
+                  <th scope="col" className="table-header">Descuento</th>
+                  <th scope="col" className="table-header">Monto</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-
+              </thead>
+              <tbody>
+                {infracciones.length > 0 ? (
+                  infracciones.map((infraccion, index) => {
+                    const { importe, descuento } = procesarAdeudos(infraccion);
+                    return (
+                      <tr key={index}>
+                        <td>{infraccion[0]}</td>
+                        <td>{infraccion[1]}</td>
+                        <td>{format(new Date(infraccion[2]), 'dd MMMM yyyy HH:mm:ss')}</td>
+                        <td>{infraccion[3]}</td>
+                        <td>{infraccion[4]}</td>
+                        <td>${descuento.toFixed(2)}</td>
+                        <td>${importe.toFixed(2)}</td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan="7" style={{ textAlign: "center" }}>No hay multas registradas.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          )}
         
         {visible &&(
         <div className="form-group">
-          
           <table className="table-result">
             <tbody>
               <tr>

@@ -142,6 +142,55 @@ a{
         display: none;
       }
 
+      .form--placa {
+        display: flex;
+        align-items: center; /* Alinea verticalmente los elementos */
+        padding-bottom: 1rem;
+    }
+    
+    #input {
+        margin-bottom: 2rem;
+        height: 4rem;
+        width: 30rem;
+        margin-left: 2rem;
+        text-transform: uppercase;
+        font-size: 15px;
+        border: 2px solid gray;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3 ease;
+    }
+
+    .error{
+      border-color: red;
+    }
+
+    #input::placeholder{
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    #input:focus{
+      border-color: #0d9223
+    }
+
+    #button::hover{
+      cursor: pointer;
+    }
+    
+    #button {
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: rgb(20, 20, 56);
+        color: white;
+        border: none;
+        cursor: pointer;
+        height: 4rem; /* Para que tenga la misma altura que el input */
+        width: 10rem;
+        margin-left: 2rem;
+    }
+
       .table{
         border-radius: 0rem;
         border: none;
@@ -192,6 +241,55 @@ a{
         display: none;
       }
 
+      .form--placa {
+        display: flex;
+        align-items: center; /* Alinea verticalmente los elementos */
+        padding-bottom: 1rem;
+    }
+    
+    #input {
+        margin-bottom: 2rem;
+        height: 4rem;
+        width: 30rem;
+        margin-left: 2rem;
+        text-transform: uppercase;
+        font-size: 15px;
+        border: 2px solid gray;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3 ease;
+    }
+
+    .error{
+      border-color: red;
+    }
+
+    #input::placeholder{
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    #input:focus{
+      border-color: #0d9223
+    }
+
+    #button::hover{
+      cursor: pointer;
+    }
+    
+    #button {
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: rgb(20, 20, 56);
+        color: white;
+        border: none;
+        cursor: pointer;
+        height: 4rem; /* Para que tenga la misma altura que el input */
+        width: 10rem;
+        margin-left: 2rem;
+    }
+
       .table {
         display: table;
         width: 100%;
@@ -202,6 +300,7 @@ a{
         width: 100%;
         margin-top: 20px;
         border-collapse: collapse;
+        border-spacing: 0;
       }
 
       .tdtable{
@@ -211,6 +310,19 @@ a{
       .table-header{
         font-size: 1.5rem;
         text-align: center;
+      }
+
+      td, th{
+        border: none;
+        padding: 0;
+      }
+
+      td{
+        font-size: 1.2rem;
+      }
+
+      .table-header{
+        font-size: 1.3rem;
       }
     
       .table th,
@@ -316,7 +428,7 @@ a{
       }
 
       .tdspann{
-        margin-left: 63rem;
+        margin-left: 64rem;
       }
 
       .table-header{
@@ -390,15 +502,15 @@ a{
       }
 
       .tdspan{
-        margin-left: 105rem;
+        margin-left: 101rem;
       }
 
       .tdspann{
-        margin-left: 104rem;
+        margin-left: 100rem;
       }
 
       .tdtable{
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
     }
 
