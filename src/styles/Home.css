@@ -8,6 +8,9 @@
     --verde: #1fff1f;
     --fuente-principal: 'Outfit', sans-serif;
 }
+
+
+
 html {
     font-size: 62.5%;
     box-sizing: border-box;
@@ -17,7 +20,7 @@ html {
 }
 body {
     font-size: 2rem;
-    font-family: var(--fuente-principal);
+    font-family: Roboto;
     line-height: 1.5;
 
     margin: 0;
@@ -30,7 +33,13 @@ a{
     text-decoration: none;
 }
 
+p, h2, h1,a, input, button{
+    font-family: Roboto;
+}
 
+Link{
+    font-family: Roboto;
+}
 /* 
 @media(){
    
@@ -76,11 +85,13 @@ a{
 }
 
 .header__nav--down a{
+    font-family: Roboto;
     color: var(--verde);
     font-size: 2rem;
     font-weight: bold;
 } 
 .header__nav--up,  a{
+    font-family: Roboto;
     color: var(--morado);
     font-size: 2rem;
     font-weight: bold;
@@ -92,10 +103,11 @@ a{
 
 
 .hero-parrafo{
+    font-family: Roboto;
     background-color: #ebde6b;
     font-size:1.5rem;
     text-align: center;
-    margin-top:4.2rem;
+    margin-top:0rem;
     padding-top: .1rem;
     padding-bottom: .1rem;
 }
@@ -107,6 +119,7 @@ a{
 }
 
 .botones-parrafo{
+    font-family: Roboto;
     position: relative;
     font-size: 2.5rem;
     color: var(--blanco);
@@ -114,8 +127,9 @@ a{
     display: flex;
     align-items: flex-end;
     text-align: center;
-    top: 5rem;
+    top: 3rem;
     opacity: 80%;
+    left: 1rem;
 
 }
 
@@ -161,11 +175,22 @@ a{
 }
 
 .tdtable{
+    font-family: Roboto;
     font-weight: bold;
 }
 
-.consulta__footer{
-    padding: 2rem
+#aviso__footer{
+    font-family: Roboto;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.consulta__footer p{
+    font-family: Roboto;
+    font-size: 1.5rem;
+    color: var(--gris_medio)
 }
 
 
@@ -249,7 +274,7 @@ a{
         align-items: flex-end;
         text-align: center;
         top: 5rem;
-        left: 5rem;
+        left: 10rem;
         opacity: 80%;
     
     }
@@ -352,7 +377,7 @@ a{
         align-items: flex-end;
         text-align: center;
         top: 5rem;
-        left: 5rem;
+        left: 15rem;
         opacity: 80%;
     
     }
@@ -454,17 +479,17 @@ a{
         color: var(--blanco);
         font-weight:800;
         display: flex;
-        align-items: flex-end;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        top: 5rem;
-        left: 30rem;
         opacity: 80%;
-        width: 80rem;
-    
+        width: 100%;
+        height: 100%;
+        margin-left: -15rem;
     }
 
     .hero__image{
-        height: 4rem;
+        height: 100%;
         margin-top: -1rem;
     }
     
@@ -600,7 +625,7 @@ a{
         align-items: flex-end;
         text-align: center;
         top: 15rem;
-        left: 35rem;
+        left: 45rem;
         opacity: 80%;
         width: 80rem;
     

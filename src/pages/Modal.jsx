@@ -1,12 +1,12 @@
 
 import '../styles/Modal.css'
 
-
-
 // eslint-disable-next-line react/prop-types
 function Modal({ isOpen, onClose }) {
     if (!isOpen) return null; // No renderiza el modal si no está abierto
-
+    const redirigir = () => {
+        window.location.href = 'https://www.monterrey.gob.mx'; 
+      };
     return (
         <div 
             className="modal fade show d-block" 
@@ -68,7 +68,7 @@ function Modal({ isOpen, onClose }) {
                                 <button 
                                     type="button" 
                                     className="btn" 
-                                    onClick={onClose}
+                                    onClick={redirigir}
                                 >
                                     No
                                 </button>

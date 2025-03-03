@@ -7,6 +7,7 @@
     --morado:#861cff;
     --verde: #0e680e;
     --fuente-principal: 'Outfit', sans-serif;
+    --color-btn: rgb(10, 240, 140);
 }
 html {
     font-size: 62.5%;
@@ -29,6 +30,11 @@ img {
 a{
     text-decoration: none;
 }
+
+td, th, p, label{
+  font-family: Roboto;
+}
+
 
 .container{
   margin-top: 5rem;
@@ -59,6 +65,51 @@ a{
     .consulta__formulario{
       margin-top: 2rem;
     }
+
+    
+    #input {
+      margin-bottom: 2rem;
+      height: 4rem;
+      width: 30rem;
+      margin-left: 2rem;
+      text-transform: uppercase;
+      font-size: 15px;
+      border: 2px solid gray;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.3 ease;
+  }
+
+  .error{
+    border-color: red;
+  }
+
+    #input::placeholder{
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    #input:focus{
+      border-color: #0d9223
+    }
+
+    #button::hover{
+      cursor: pointer;
+    }
+
+    #button {
+      margin-bottom: 2rem;
+      padding: 0.5rem;
+      background-color: var(--color-btn);
+      color: white;
+      border: none;
+      cursor: pointer;
+      height: 4rem; /* Para que tenga la misma altura que el input */
+      width: 8rem;
+      margin-left: 1rem;
+  }
+
     .form--table{
       display: none
     }
@@ -89,6 +140,7 @@ a{
     }
   
     .card-header {
+      font-family: Roboto;
       font-weight: bold;
       background-color: #616161;
       color:rgb(255, 255, 255);
@@ -97,10 +149,12 @@ a{
     }
   
     .card-body {
+      font-family: Roboto;
       padding: 10px;
     }
   
     .card-footer {
+      font-family: Roboto;
       padding: 10px;
       background-color: #686868;
       color: rgb(240, 240, 240);
@@ -120,12 +174,202 @@ a{
     }
 
     .tdspan{
-      margin-left: 10rem;
+      font-family: Roboto;
+      margin-left: 9rem;
     }
 
     .tdspann{
-      margin-left: 9rem;
+      font-family: Roboto;
+      margin-left: 8rem;
     }
+
+    #BotonPagar{
+      display: none;
+    }
+
+    .SeccionPago{
+      display:none;
+    }
+
+    #BotonPagarCard{
+      margin-bottom: 2rem;
+      padding: 0.5rem;
+      background-color: var(--color-btn);
+      color: white;
+      border: none;
+      cursor: pointer;
+      height: 4rem; /* Para que tenga la misma altura que el input */
+      width: 10rem;
+      margin-top: 2rem;
+      float:right;
+      font-size: 1.9rem;
+      border-radius: 1rem;
+    }
+
+    .SeccionPagoCard{
+      margin-top: 8rem;
+    }
+
+    #titulo-pagar{
+      font-size: 3rem;
+      font-weight: bolder;
+    }
+
+    .Contacto__Header{
+      font-size: 2rem;
+      background-color: var(--gris_suave);
+      padding: .1rem;
+      font-weight: bolder;
+    }
+
+    
+    #email{
+      margin-bottom: 0;
+    }
+
+    .Contacto__Datos input{
+      width: 100%;
+      height: 4rem;
+      border-radius: 1rem;
+      border-color: var(--gris_suave);
+      margin-bottom: 0;
+    }
+
+    input{
+      width: 100%;
+      height: 4rem;
+      border-radius: 1rem;
+      border-color: var(--gris_suave);
+      margin-bottom: 0;
+      font-size: 2rem;
+    }
+
+    input::placeholder{
+      padding-left: 1rem;
+      font-size: 2rem;
+      
+    }
+
+    #comprobantes{
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--gris_medio)
+    }
+
+    .Forma__Header{
+      background-color: var(--gris_suave);
+      padding: .1rem;
+      font-weight: bolder;
+      margin-top: 3rem;
+    }
+
+    #visa{
+      width: 8rem;
+      height: 2rem;
+    }
+
+    #visaP{
+      width: 20rem;
+      border-left: 2px solid var(--gris_suave);
+      border-top: 2px solid var(--gris_suave);
+      border-right: 2px solid var(--gris_suave);
+      padding: 1rem;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      margin-bottom: 0;
+    }
+
+    .Border{
+      border-top: 2px solid var(--gris_suave);
+      border-left-style: hidden;
+      width: 25%;
+      margin-left: 20rem;
+      margin-top: -2px;
+    }
+
+    .Datos__Content--datos{
+      margin-top: 2rem;
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .datos-titular{
+      margin-top: 1rem;
+    }
+
+    .datos-tarjeta{
+      margin-top: 2rem;
+    }
+
+    .datos-traseros{
+      margin-top: 2rem;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .datos-traseros input:last-child{
+      margin-top: 1.5rem;
+    }
+
+    .CodigoSeguridad{
+      margin-top: 2rem;
+    }
+
+    .CodigoSeguridad label, input{
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    #dateMonth, #dateYear{
+      width: 40%;
+      margin-right: 2rem;
+    }
+     
+    .Pago__Icons{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .Icons--seguridad--izq{
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: row;
+      gap: 4rem;
+      width: 15rem;
+    }
+
+    .Icons--seguridad--izq img{
+      width: 15rem;
+      height: 5rem;
+    }
+
+    .Icons--seguridad--der{
+     margin-top: 2rem;
+     margin-right: 0;
+      gap: 2rem;
+      width: 20rem
+    }
+
+    .Icons--seguridad--der p{
+      width: 100%;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .Icons--seguridad--der img{
+      margin-top: 0;
+    }
+
+    .secure{
+      margin-top: 0;
+      width: 100%;
+      font-size: 1.5rem;
+    }
+
 
   }
   
@@ -139,6 +383,14 @@ a{
       }
 
       .form-group-cards{
+        display: none;
+      }
+
+      #BotonPagarCard{
+        display: none;
+      }
+
+      .SeccionPagoCard{
         display: none;
       }
 
@@ -172,7 +424,7 @@ a{
     }
 
     #input:focus{
-      border-color: #0d9223
+      border-color: #0d9223;
     }
 
     #button::hover{
@@ -182,7 +434,7 @@ a{
     #button {
         margin-bottom: 2rem;
         padding: 0.5rem;
-        background-color: rgb(20, 20, 56);
+        background-color: var(--color-btn);
         color: white;
         border: none;
         cursor: pointer;
@@ -201,12 +453,14 @@ a{
       }
 
       .table-header{
+        font-family: Roboto;
         font-size: 1.5rem;
         text-align: center;
       }
     
       .table th,
       .table td {
+        font-family: Roboto;
         padding: 5px;
         max-width: 13rem;
         text-align: right;
@@ -223,12 +477,181 @@ a{
       }
 
       .tdspan{
+        font-family: Roboto;
         margin-left: 40rem;
       }
 
       .tdspann{
+        font-family: Roboto;
         margin-left: 39rem;
       }
+
+      #BotonPagar{
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: var(--color-btn);
+        color: white;
+        border: none;
+        cursor: pointer;
+        height: 4rem; /* Para que tenga la misma altura que el input */
+        width: 10rem;
+        margin-top: 2rem;
+        float:right;
+        font-size: 1.9rem;
+        border-radius: 1rem;
+      }
+
+      .SeccionPago{
+        margin-top: 8rem;
+      }
+
+      #titulo-pagar{
+        font-size: 3rem;
+        font-weight: bolder;
+      }
+
+      .Form{
+        border-left: 1px solid #252525;
+      }
+
+      .Pago-content{
+        margin-left: 2rem;
+      }
+
+      .Contacto__Header{
+        background-color: var(--gris_suave);
+        padding: .1rem;
+        font-weight: bolder;
+      }
+
+      
+      #email{
+        margin-bottom: 0;
+      }
+
+      .Contacto__Datos input{
+        width: 100%;
+        height: 4rem;
+        border-radius: 1rem;
+        border-color: var(--gris_suave);
+        margin-bottom: 0;
+      }
+
+      input{
+        width: 100%;
+        height: 4rem;
+        border-radius: 1rem;
+        border-color: var(--gris_suave);
+        margin-bottom: 0;
+        font-size: 2rem;
+      }
+
+      input::placeholder{
+        padding-left: 1rem;
+        font-size: 2rem;
+        
+      }
+
+      #comprobantes{
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: var(--gris_medio)
+      }
+
+      .Forma__Header{
+        background-color: var(--gris_suave);
+        padding: .1rem;
+        font-weight: bolder;
+        margin-top: 3rem;
+      }
+
+      #visa{
+        width: 6rem;
+        height: 1.5rem;
+      }
+
+      #visaP{
+        width: 25rem;
+        border-left: 2px solid var(--gris_suave);
+        border-top: 2px solid var(--gris_suave);
+        border-right: 2px solid var(--gris_suave);
+        padding: 1rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        margin-bottom: 0;
+      }
+
+      .Border{
+        border-top: 2px solid var(--gris_suave);
+        border-left-style: hidden;
+        width: 80%;
+        margin-left: 25rem;
+        margin-top: -2px;
+      }
+
+      .Datos__Content--datos{
+        margin-top: 2rem;
+      }
+
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .datos-traseros{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #dateMonth, #dateYear{
+        width: 40%;
+        margin-right: 2rem;
+      }
+       
+      .Pago__Icons{
+        display: flex;
+        flex-direction: rows;
+      }
+
+      .Icons--seguridad--izq{
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        width: 10rem;
+      }
+
+      .Icons--seguridad--izq img{
+       
+        width: 15rem;
+        height: 5rem;
+      }
+
+      .Icons--seguridad--der{
+       margin-top: 2rem;
+       margin-left: 15rem;
+        gap: 2rem;
+        width: 20rem
+      }
+
+      .Icons--seguridad--der p{
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .Icons--seguridad--der img{
+        margin-top: 0;
+      }
+
+      .secure{
+        margin-top: 0;
+        width: 20rem;
+        font-size: 1.5rem;
+      }
+
+
+
     }
 
     @media screen and (min-width: 820px){
@@ -281,7 +704,7 @@ a{
     #button {
         margin-bottom: 2rem;
         padding: 0.5rem;
-        background-color: rgb(20, 20, 56);
+        background-color: var(--color-btn);
         color: white;
         border: none;
         cursor: pointer;
@@ -308,16 +731,19 @@ a{
       }
 
       .table-header{
+        font-family: Roboto;
         font-size: 1.5rem;
         text-align: center;
       }
 
       td, th{
+        font-family: Roboto;
         border: none;
         padding: 0;
       }
 
       td{
+        font-family: Roboto;
         font-size: 1.2rem;
       }
 
@@ -343,11 +769,13 @@ a{
       }
 
       .tdspan{
-        margin-left: 45rem;
+        font-family: Roboto;
+        margin-left: 53.7rem;
       }
 
       .tdspann{
-        margin-left: 44rem;
+        font-family: Roboto;
+        margin-left: 53rem;
       }
 
     }
@@ -395,7 +823,7 @@ a{
     #button {
         margin-bottom: 2rem;
         padding: 0.5rem;
-        background-color: rgb(20, 20, 56);
+        background-color: var(--color-btn);
         color: white;
         border: none;
         cursor: pointer;
@@ -405,6 +833,7 @@ a{
     }
 
     .table{
+      font-family: Roboto;
       border-radius: 0rem;
       border: none;
       display: table;
@@ -415,6 +844,7 @@ a{
     }
 
     td, th{
+      font-family: Roboto;
       border: none;
       padding: 0;
     }
@@ -424,11 +854,13 @@ a{
       }
 
       .tdspan{
-        margin-left: 65rem;
+        font-family: Roboto;
+        margin-left: 66.9rem;
       }
 
       .tdspann{
-        margin-left: 64rem;
+        font-family: Roboto;
+        margin-left: 66rem;
       }
 
       .table-header{
@@ -467,14 +899,16 @@ a{
       
 
       .table-header{
+        font-family: Roboto;
         font-size: 2rem;
         text-align: center;
       }
     
       .table th,
       .table td {
+        font-family: Roboto;
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         text-align: center;
       }
     
@@ -488,11 +922,13 @@ a{
       }
 
       .tdspan{
-        margin-left: 99rem;
+        font-family: Roboto;
+        margin-left: 97rem;
       }
 
       .tdspann{
-        margin-left: 98.5rem;
+        font-family: Roboto;
+        margin-left: 96.3rem;
       }
     }
 
@@ -502,14 +938,17 @@ a{
       }
 
       .tdspan{
-        margin-left: 101rem;
+        font-family: Roboto;
+        margin-left: 102rem;
       }
 
       .tdspann{
-        margin-left: 100rem;
+        font-family: Roboto;
+        margin-left: 101rem;
       }
 
       .tdtable{
+        font-family: Roboto;
         font-size: 1.8rem;
       }
     }
@@ -520,10 +959,12 @@ a{
       }
 
       .tdspan{
+        font-family: Roboto;
         margin-left: 146rem;
       }
 
       .tdspann{
+        font-family: Roboto;
         margin-left: 145rem;
       }
     }
