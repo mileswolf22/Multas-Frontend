@@ -1,36 +1,14 @@
 /* eslint-disable no-unused-vars */
 import {Link} from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import '../styles/Home.css'
 import Modal from '../pages/Modal'
 import Placas from '../pages/Placas'
 import botones_logo from '../../public/botones-links-pago.png'
-
+import {useModal} from '../hooks/useModal'
 
 function Home() {
-    const [isModalOpen, setModalOpen] = useState(false);
-    
-
-//Funcionamiento de Modal
-
-    useEffect(() => {
-        // Muestra el modal automáticamente al cargar la página
-        setModalOpen(true);
-    }, []);
-
-    useEffect(() => {
-        if(isModalOpen) {
-            document.body.style.overflow = "hidden"; //bloquear scroll
-        }else{
-            document.body.style.overflow = "auto"; //restaurar el scroll
-        }
-
-        return () => {
-            document.body.style.overflow = "auto"; //Limpieza en caso de desmontar
-        };
-    }, [isModalOpen]);
-
+    const { isModalOpen, setModalOpen } = useModal(); // Usa el hook
 
     return(
 

@@ -11,6 +11,7 @@ import security from '../../public/security.png'
 import verify from '../../public/verified-by-visa.png'
 import mastercard from '../../public/Mastecard-Securecode.png'
 
+
 function Placas() {
   const [inputValue, setInputValue] = useState("");
   const [infracciones, setInfracciones] = useState([]);
@@ -44,7 +45,8 @@ function Placas() {
       }else{
         console.log("Realizando consulta...");
         //const response = await axios.get(`http://192.168.100.92:5000/api/infracciones/?placa=${safeData}`);
-        const response = await axios.get(`http://192.168.252.1:5000/api/infracciones/?placa=${safeData}`);
+        const response = await axios.get(`http://192.168.37.110:5000/api/infracciones/?placa=${safeData}`);
+        //const response = await axios.get(`http://192.168.252.1:5000/api/infracciones/?placa=${safeData}`);
         console.log(JSON.stringify(response.data, null, 2));
         setInfracciones(response.data); 
 
@@ -287,7 +289,7 @@ function Placas() {
                             <div className="datos-tarjeta">
                                 <div className="datos-delanteros">
                                   <p htmlFor="">Numero de Tarjeta</p>
-                                  <input type="number" required value={cardMode} autocomplete="cc-number" inputmode="numeric" placeholder="XXXX XXXX XXXX XXXX" onChange={debitCardMode}/>
+                                  <input type="number" required value={cardMode}  inputMode="numeric" placeholder="XXXX XXXX XXXX XXXX" onChange={debitCardMode}/>
                                 </div>
 
                                 <div className='datos-traseros'>
