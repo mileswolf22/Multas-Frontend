@@ -5,11 +5,6 @@ import LoadingModal from '../pages/ModalLoad'
 import DOMPurify from "dompurify";
 import { format } from 'date-fns';
 import { AnimatePresence } from 'framer-motion';
-import visa from '../../public/visa.png'
-import openpay from '../../public/openpay.png'
-import security from '../../public/security.png'
-import verify from '../../public/verified-by-visa.png'
-import mastercard from '../../public/Mastecard-Securecode.png'
 
 
 function Placas() {
@@ -17,11 +12,6 @@ function Placas() {
   const [infracciones, setInfracciones] = useState([]);
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [visiblePago, setVisiblePago] = useState(false);
-  const [cardMode, setcardMode] = useState("");
-  const [dateMonth, setDateMonth] = useState("");
-  const [dateYear, setDateYear] = useState("");
-  const [code, setCode] = useState("");
 
   const handleInputChange = (e) => {
     const sanitizedValue = DOMPurify.sanitize(e.target.value);
@@ -45,8 +35,9 @@ function Placas() {
       }else{
         console.log("Realizando consulta...");
         //const response = await axios.get(`http://192.168.100.92:5000/api/infracciones/?placa=${safeData}`);
-        const response = await axios.get(`http://192.168.37.110:5000/api/infracciones/?placa=${safeData}`);
+        //const response = await axios.get(`http://192.168.37.110:5000/api/infracciones/?placa=${safeData}`);
         //const response = await axios.get(`http://192.168.252.1:5000/api/infracciones/?placa=${safeData}`);
+        const response = await axios.get(`http://pruebasdemultasdetransito.monterrey.gob.mx:5000/api/infracciones/?placa=${safeData.toUpperCase()}`);
         console.log(JSON.stringify(response.data, null, 2));
         setInfracciones(response.data); 
 
@@ -65,51 +56,12 @@ function Placas() {
     }
     };
 
-  const seccionPago = () =>{
-    setVisiblePago(true)
-  }
 
   const clearTable = () => {
     setInfracciones([])
   }
 
-  const debitCardMode = (e) =>{
-    let value = e.target.value;
-    // Permite solo números y bloquea cualquier otro carácter
-    value = value.replace(/\D/g, "");
-
-    // Limita la entrada a 16 caracteres
-    if (value.length > 16) return;
-
-    setcardMode(value);
-  }
-
-  const dateModeMonth = (e) =>{
-    let value = e.target.value;
-    value = value.replace(/\D/g, "");
-
-    if(value.length > 2) return;
-
-    setDateMonth(value);
-  }
-
-  const dateModeYear = (e) =>{
-    let value = e.target.value;
-    value = value.replace(/\D/g, "");
-
-    if(value.length > 2) return;
-
-    setDateYear(value);
-  }
-
-  const codeMode = (e) => {
-    let value = e.target.value;
-    value = value.replace(/\D/g, "");
-
-    if(value.length > 3) return;
-
-    setCode(value);
-  }
+  
 
   function procesarAdeudos(infraccion) {
     let ViewBag = {};
@@ -248,89 +200,9 @@ function Placas() {
             </tbody>
           </table>
 
-          <button type='button' id="BotonPagar" onClick={seccionPago}>Pagar</button>
+          <button type='button' id="BotonPagar" >Pagar</button>
         </div>
         )}
-
-        
-          <div className="SeccionPago">
-            {visiblePago &&(
-              <form className="Form" action="">
-                <div className="Pago-content">
-                  <p id="titulo-pagar">Pagar</p>
-
-                  <div className="Pago__Contacto">
-                    <div className="Contacto__Header">
-                        <p id="datos-contacto">Datos de Contacto</p>
-                    </div>
-                    <div className="Contacto__Datos">
-                        <p id="email">Email *</p>
-                        <input required type="email" placeholder='ejemplo@gmail.com'></input>
-                        <p id="comprobantes">Los comprobantes de pago llegarán a este correo</p>
-                    </div>
-                  </div>
-
-                  <div className="Pago__Forma">
-                    <div className="Forma__Header">
-                      <p>Forma de Pago (crédito o débito)</p>
-                    </div>
-
-                    <div className="Forma__Datos">
-                        <div className="Datos__Content">
-                          <div className="Datos__Content__Header">
-                              <p id="visaP"><span><img src={visa} id="visa"/></span>    Visa/Masterdard</p>
-                          </div>
-                          <div className="Border"></div>
-                          <div className="Datos__Content--datos">
-                            <div className="datos-titular">
-                                <p htmlFor="">Nombre del Titular</p>
-                                <input type="text" required placeholder='Como aparece en la tarjeta'/> 
-                            </div>
-                            <div className="datos-tarjeta">
-                                <div className="datos-delanteros">
-                                  <p htmlFor="">Numero de Tarjeta</p>
-                                  <input type="number" required value={cardMode}  inputMode="numeric" placeholder="XXXX XXXX XXXX XXXX" onChange={debitCardMode}/>
-                                </div>
-
-                                <div className='datos-traseros'>
-                                    <div className="FechaExpiracion">
-                                          <p htmlFor="">Fecha de Expiracion</p>
-                                          <input type="text" id="dateMonth" required placeholder='MM' value={dateMonth} onChange={dateModeMonth}/>
-                                          <input type="text" id="dateYear" required placeholder='YY' value={dateYear} onChange={dateModeYear}/>
-                                     </div>
-                                     <div className="CodigoSeguridad">
-                                          <p htmlFor="">Codigo de Seguridad</p>
-                                          <input type="text" id="code" required placeholder='3 dígitos' value={code} onChange={codeMode}/>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div className="Pago__Icons">
-                      <div className="Icons--seguridad--izq">
-                        <img src={mastercard} alt="" />
-                        <img src={verify} alt="" />
-                      </div>
-
-                      <div className="Icons--seguridad--der">
-                          <p>Transacciones realizadas vía:</p>
-                          <img src={openpay} alt="" />                        
-                      </div>
-
-                      <div className="secure">
-                          <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
-                          <img src={security} alt="" />
-                      </div>
-                  </div>
-                  <div className="Pago__Btn"> 
-                      <button type="submit" id="BotonPagar">Pagar</button>
-                  </div>
-                </div>
-              </form>
-            )}
-          </div>
         
          
         {/* Cards */}
@@ -406,90 +278,11 @@ function Placas() {
             </tbody>
           </table>
 
-          <button type='button' id="BotonPagarCard" onClick={seccionPago}>Pagar</button>
+          <button type='button' id="BotonPagarCard">Pagar</button>
         </div>
         )}
 
-        <div className="SeccionPagoCard">
-            {visiblePago &&(
-              <form className="Form" action="">
-                <div className="Pago-content">
-                  <p id="titulo-pagar">Pagar</p>
-
-                  <div className="Pago__Contacto">
-                    <div className="Contacto__Header">
-                        <p>Datos de Contacto</p>
-                    </div>
-                    <div className="Contacto__Datos">
-                        <p>Email</p>
-                        <input placeholder='ejemplo@gmail.com'></input>
-                        <p id="comprobantes">Los comprobantes de pago llegarán a este correo</p>
-                    </div>
-                  </div>
-
-                  <div className="Pago__Forma">
-                    <div className="Forma__Header">
-                      <p>Forma de Pago (crédito o débito)</p>
-                    </div>
-
-                    <div className="Forma__Datos">
-                        <div className="Datos__Content">
-                          <div className="Datos__Content__Header">
-                            <p id="visaP"><span><img src='../public/visa.png' id="visa"/></span>Visa/Masterdard</p>
-                          </div>
-                          <div className="Border"></div>
-                          <div className="Datos__Content--datos">
-                            <div className="datos-titular">
-                                <label htmlFor="">Nombre del Titular</label>
-                                <input type="text" placeholder='Como aparece en la tarjeta'/> 
-                            </div>
-                            <div className="datos-tarjeta">
-                                <div className="datos-delanteros">
-                                  <label htmlFor="">Numero de Tarjeta</label>
-                                  <input type="text" placeholder='XXXX XXXX XXXX XXXX'/>
-                                </div>
-
-                                <div className='datos-traseros'>
-                                    <div className="FechaExpiracion">
-                                          <label htmlFor="">Fecha de Expiracion</label>
-                                          <input type="text" value={dateMonth} onChange={dateModeMonth} placeholder='MM'/>
-                                          <input type="text" value={dateYear} onChange={dateModeYear}  placeholder='YY'/>
-                                    </div>
-                                    <div className="CodigoSeguridad">
-                                          <label htmlFor="">Codigo de Seguridad</label>
-                                          <input type="text" value={code} onChange={codeMode} placeholder='3 dígitos'/>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div className="Pago__Icons">
-                      <div className="Icons--seguridad--izq">
-                        <img src={mastercard} alt="" />
-                        <img src={verify} alt="" />
-                      </div>
-
-                      <div className="Icons--seguridad--der">
-                          <p>Transacciones realizadas vía:</p>
-                          <img src={openpay} alt="" />                        
-                      </div>
-
-                      <div className="secure">
-                          <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
-                          <img src={security} alt="" />
-                      </div>
-                  </div>
-                  <div className="Pago__Btn"> 
-                      <button type="submit" id="BotonPagarCard">Pagar</button>
-                  </div>
-                </div>
-              </form>
-            )}
-          </div>
-
-
+      
       </form>
 
         
