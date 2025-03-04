@@ -170,17 +170,16 @@ td, th, p, label{
 
 
     .tdtable{
-      width: 100%
+      width: 100%;
+      text-align: right;
+      font-weight: 500;
     }
 
     .tdspan{
       font-family: Roboto;
-      margin-left: 9rem;
-    }
-
-    .tdspann{
-      font-family: Roboto;
-      margin-left: 8rem;
+      margin-left: 7rem;
+      font-weight: bolder;
+      text-decoration: underline;
     }
 
     #BotonPagar{
@@ -464,8 +463,22 @@ td, th, p, label{
         padding: 5px;
         max-width: 13rem;
         text-align: right;
-        
+        font-size: 1rem;
       }
+
+      /*Controlar ancho de columnas*/
+      .thInfraccion{
+        width: 20%
+      }
+
+      .thReduce{
+        width: 5%;
+      }
+
+      .thMidReduce{
+        width: 4%
+      }
+  /*---------------------------*/
     
       .table th {
         background-color: #f8f9fa;
@@ -476,15 +489,6 @@ td, th, p, label{
         width: 100%
       }
 
-      .tdspan{
-        font-family: Roboto;
-        margin-left: 40rem;
-      }
-
-      .tdspann{
-        font-family: Roboto;
-        margin-left: 39rem;
-      }
 
       #BotonPagar{
         margin-bottom: 2rem;
@@ -502,7 +506,20 @@ td, th, p, label{
       }
 
       
+      .table-result{
+        font-size: 1.5rem;
+        margin-left: 42rem;
+      }
 
+      .tdtable{
+        text-align: right;
+        font-weight: 500;
+      }
+
+      .tdspan{
+        font-weight: bolder;
+        text-decoration: underline;
+      }
 
     }
 
@@ -620,16 +637,34 @@ td, th, p, label{
         width: 100%
       }
 
-      .tdspan{
-        font-family: Roboto;
-        margin-left: 53.7rem;
+      /*Controlar ancho de columnas*/
+      .thInfraccion{
+        width: 40%
       }
 
-      .tdspann{
-        font-family: Roboto;
-        margin-left: 53rem;
+      .thReduce{
+        width: 8%;
       }
 
+      .thMidReduce{
+        width: 9%
+      }
+  /*---------------------------*/
+
+  .table-result{
+    font-size: 2rem;
+    margin-left: 50rem;
+  }
+
+  .tdtable{
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .tdspan{
+    font-weight: bolder;
+    text-decoration: underline;
+  }
     }
 
 
@@ -693,6 +728,7 @@ td, th, p, label{
       margin-top: 20px;
       border-collapse: collapse;
       border-spacing: 0;
+      table-layout: fixed;
     }
 
     td, th{
@@ -700,19 +736,33 @@ td, th, p, label{
       border: none;
       padding: 0;
     }
+    
+    /*Controlar ancho de columnas*/
+    .thInfraccion{
+        width: 30%;
+        text-align: left;
+    }
+
+    .thReduce{
+      width: 7%;
+    }
+
+    .thMidReduce{
+      width: 10%
+    }
+    /*---------------------------*/
+      .table-result{
+        margin-left: 67rem;
+      }
 
       .tdtable{
-        width: 100%
+        text-align: right;
+        font-size: 1.5rem;
+        font-weight: 500;
       }
 
-      .tdspan{
-        font-family: Roboto;
-        margin-left: 66.9rem;
-      }
-
-      .tdspann{
-        font-family: Roboto;
-        margin-left: 66rem;
+      .thInfraccion{
+        text-align: left;
       }
 
       .table-header{
@@ -721,10 +771,6 @@ td, th, p, label{
 
       td{
         font-size: 1.3rem;
-      }
-
-      .tdtable{
-        font-size: 1.5rem;
       }
 
     }
@@ -748,8 +794,6 @@ td, th, p, label{
         display: none;
       }
 
-      
-
       .table-header{
         font-family: Roboto;
         font-size: 2rem;
@@ -763,60 +807,73 @@ td, th, p, label{
         font-size: 1.2rem;
         text-align: center;
       }
+
+      #LeftAlign{
+        text-align: left;
+      }
     
       .table th {
         background-color: #f8f9fa;
         font-weight: bold;
       }
 
+      .table-result{
+        margin-left: 83rem;
+      }
+
+      .thInfraccion{
+        text-align: left;
+      }
+
       .tdtable{
-        width: 100%
+        text-align: right;
+        font-weight: 500;
       }
 
       .tdspan{
-        font-family: Roboto;
-        margin-left: 97rem;
+        font-weight: bolder;
+        text-decoration: underline;
       }
+    }
 
-      .tdspann{
-        font-family: Roboto;
-        margin-left: 96.3rem;
+
+    @media(min-width: 1300px){
+      .table-result{
+        margin-left: 95rem;
       }
     }
 
     @media(min-width: 1400px){
-      .tdtable{
-        width: 100%
-      }
 
-      .tdspan{
-        font-family: Roboto;
-        margin-left: 102rem;
-      }
-
-      .tdspann{
-        font-family: Roboto;
-        margin-left: 101rem;
+      .table-result{
+        margin-left: 103rem;
       }
 
       .tdtable{
         font-family: Roboto;
         font-size: 1.8rem;
+        text-align: right;
+        font-weight: 500;
+      }
+
+      .tdspan{
+        font-weight: bolder;
+        text-decoration: underline;
       }
     }
 
     @media(min-width: 1600px){
+      .table-result{
+        margin-left: 110rem;
+      }
+
       .tdtable{
-        width: 100%
+        text-align: right;
+        font-weight: 500;
       }
 
       .tdspan{
-        font-family: Roboto;
-        margin-left: 146rem;
-      }
-
-      .tdspann{
-        font-family: Roboto;
-        margin-left: 145rem;
+        font-weight: bolder;
+        text-decoration: underline;
       }
     }

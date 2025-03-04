@@ -3,8 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import LoadingModal from '../pages/ModalLoad'
 import DOMPurify from "dompurify";
-import { format } from 'date-fns';
-import { AnimatePresence } from 'framer-motion';
+
+import { AnimatePresence} from 'framer-motion';
+import { procesarAdeudos } from '../hooks/placasDebt';
 
 
 function Placas() {
@@ -16,7 +17,6 @@ function Placas() {
   const handleInputChange = (e) => {
     const sanitizedValue = DOMPurify.sanitize(e.target.value);
     setInputValue(sanitizedValue);
-    
   };
 
   const handleSubmit = async (e) => {
@@ -63,58 +63,6 @@ function Placas() {
 
   
 
-  function procesarAdeudos(infraccion) {
-    let ViewBag = {};
-    let bloqueado = "";
-    let ESTATUS = "";
-    let total = 0;
-    let pagado = true;
-
-    let concepto = infraccion[6];
-    let estatus = infraccion[7];
-    let descuento = infraccion[8] ? parseFloat(infraccion[8]) : 0;
-    let importe = infraccion[5] ? parseFloat(infraccion[5]) : 0;
-
-    if (concepto === "700130" || concepto === "700819") {
-      ViewBag.Mensaje = "Acudir a la Dirección de Tránsito de Monterrey en Abraham Lincoln 300, esquina con Refugio Velázquez, Col. Morelos CP 64330.";
-      bloqueado = "Bloqueado";
-    } else if (concepto === "990999") {
-      ViewBag.Mensaje = "Acudir a la Dirección de Daños Municipales en Abraham Lincoln 300, esquina con Refugio Velázquez, Col. Morelos CP 64330.";
-      bloqueado = "Bloqueado";
-    }
-
-    if (estatus === "1") {
-      ESTATUS = "Pagado";
-    } else if (estatus === "2") {
-      ESTATUS = "Pendiente de pago";
-    } else {
-      ESTATUS = "";
-    }
-
-    if (estatus !== "2") {
-      total = 0;
-    } else {
-      pagado = false;
-
-      if(importe === null){
-        importe = 0
-      }else if(importe === ""){
-        importe = 0;
-      }else{
-        if(descuento === null){
-          descuento = 0;
-        }else if(descuento === ""){
-          descuento = 0;
-        }else{
-          //Aqui deberia hacer el calculo del descuento
-          descuento = "";
-        }
-      }
-    }
-
-    return { ViewBag, bloqueado, ESTATUS, total, pagado, importe, descuento };
-  }
-
   // Calculo de los totales iterando sobre cada infracción individualmente
   const montoTotal = infracciones.reduce((acumulador, infraccion) => {
     const { importe } = procesarAdeudos(infraccion);
@@ -128,10 +76,15 @@ function Placas() {
 
   const totalPagar = montoTotal - descuentoTotal;
 
+  const formatoDecimal = (numero) => new Intl.NumberFormat('en-US', { 
+    style: 'decimal', 
+    minimumFractionDigits: 2, 
+    maximumFractionDigits: 2 
+    }).format(numero);
+
+
   return (
     <div className="consulta__formulario">
-
-      
 
       <AnimatePresence>
         {loading && <LoadingModal onClose={() => setLoading(false)} />}
@@ -149,26 +102,28 @@ function Placas() {
             <table className="table" border={1}>
               <thead>
                 <tr>
-                  <th scope="col" className="table-header">Boleta</th>
-                  <th scope="col" className="table-header">Placa</th>
+                  <th scope="col" className="table-header thReduce">Boleta</th>
+                  <th scope="col" className="table-header thMidReduce">Placa</th>
                   <th scope="col" className="table-header">Fecha Infracción</th>
-                  <th scope="col" className="table-header">Infracción</th>
-                  <th scope="col" className="table-header">Descripción</th>
-                  <th scope="col" className="table-header">Descuento</th>
-                  <th scope="col" className="table-header">Monto</th>
+                  <th scope="col" id="LeftAlign" className="table-header thInfraccion">Infracción</th>
+                  <th scope="col" id="LeftAlign" className="table-header">Descripción</th>
+                  <th scope="col" className="table-header thReduce">Descuento</th>
+                  <th scope="col" className="table-header thReduce">Monto</th>
                 </tr>
               </thead>
               <tbody>
                 {infracciones.length > 0 ? (
                   infracciones.map((infraccion, index) => {
-                    const { importe, descuento } = procesarAdeudos(infraccion);
+                    const { importe, descuento, fechaCapitalizada } = procesarAdeudos(infraccion);
+                
+
                     return (
                       <tr key={index}>
                         <td>{infraccion[0]}</td>
                         <td>{infraccion[1]}</td>
-                        <td>{format(new Date(infraccion[2]), 'dd MMMM yyyy HH:mm:ss')}</td>
-                        <td>{infraccion[3]}</td>
-                        <td>{infraccion[4]}</td>
+                        <td>{fechaCapitalizada}</td>
+                        <td id="LeftAlign">{infraccion[3]}</td>
+                        <td id="LeftAlign">{infraccion[4]}</td>
                         <td>${descuento.toFixed(2)}</td>
                         <td>${importe.toFixed(2)}</td>
                       </tr>
@@ -189,13 +144,13 @@ function Placas() {
           <table className="table-result">
             <tbody>
               <tr>
-                <td className="tdtable">Monto Total: <span className="tdspan">${montoTotal.toFixed(2)}</span></td>
+                <td className="tdtable">Monto Total: <span className='tdspan'>$ {formatoDecimal(montoTotal)}</span></td>
               </tr>
               <tr>
-                <td className="tdtable">Descuentos: <span className="tdspan">${descuentoTotal.toFixed(2)}</span></td>
+                <td className="tdtable">Descuentos: <span className='tdspan'>$ {formatoDecimal(descuentoTotal)}</span></td>
               </tr>
               <tr>
-                <td className="tdtable">Total a Pagar: <span className="tdspann">${totalPagar.toFixed(2)}</span></td>
+                <td className="tdtable">Total a Pagar: <span className='tdspan'>$ {formatoDecimal(totalPagar)}</span></td>
               </tr>
             </tbody>
           </table>
@@ -209,8 +164,9 @@ function Placas() {
         {visible &&(
         <div className="card-wrapper">
           {infracciones.length > 0 ? (
+
             infracciones.map((infraccion, index) => {
-              const { importe, descuento } = procesarAdeudos(infraccion);
+              const { importe, descuento, fechaCapitalizada } = procesarAdeudos(infraccion);
               return (
                 <div className="card" key={index}>
                   <div className="card-header">Multa #{index + 1}</div>
@@ -225,7 +181,7 @@ function Placas() {
                     </div>
                     <div className="card-item">
                       <span>Fecha Infracción:</span>
-                      <span>{format(new Date(infraccion[2]), 'dd MMMM yyyy HH:mm:ss')}</span>
+                      <span>{fechaCapitalizada}</span>
                     </div>
                     <div className="card-item">
                       <span>Infracción:</span>
@@ -267,13 +223,13 @@ function Placas() {
           <table className="table-result">
             <tbody>
               <tr>
-              <td className="tdtable">Monto Total: <span className="tdspan">${montoTotal.toFixed(2)}</span></td>
+              <td className="tdtable">Monto Total: <span className="tdspan">${formatoDecimal(montoTotal)}</span></td>
               </tr>
               <tr>
-              <td className="tdtable">Descuentos: <span className="tdspan">${descuentoTotal.toFixed(2)}</span></td>
+              <td className="tdtable">Descuentos: <span className="tdspan">${formatoDecimal(descuentoTotal)}</span></td>
               </tr>
               <tr>
-              <td className="tdtable">Total a Pagar: <span className="tdspann">${totalPagar.toFixed(2)}</span></td>
+              <td className="tdtable">Total a Pagar: <span className="tdspan">${formatoDecimal(totalPagar)}</span></td>
               </tr>
             </tbody>
           </table>
